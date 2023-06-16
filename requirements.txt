@@ -3,6 +3,6 @@ plotly
 numpy
 pandas
 colorcet
-sklearn
+scikit-learn
 gunicorn
 jupyter_dash
