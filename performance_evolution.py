@@ -4,6 +4,7 @@ import plotly.express as px
 import plotly.graph_objs as go
 from plotly.subplots import make_subplots
 import dash
+import re
 from dash import dcc
 from dash import html, callback
 from dash.dependencies import Input, Output, State
