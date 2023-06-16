@@ -6,3 +6,4 @@ colorcet
 scikit-learn
 gunicorn
 jupyter_dash
+pyarrow
