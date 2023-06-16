@@ -5,3 +5,4 @@ pandas
 colorcet
 sklearn
 gunicorn
+jupyter_dash
