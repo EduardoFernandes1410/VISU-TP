@@ -1,8 +1,6 @@
 from dash import Dash, html, dash_table, dcc, callback, Output, Input
 import plotly.graph_objects as go
 import pandas as pd
-import plotly.express as px
-import numpy as np
 
 # Incorporate data
 df = pd.read_csv("data/medals_processed.csv")

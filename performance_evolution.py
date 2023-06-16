@@ -2,9 +2,6 @@ import pandas as pd
 import numpy as np
 import plotly.express as px
 import plotly.graph_objs as go
-from ipywidgets import widgets
-import itertools
-import re
 from plotly.subplots import make_subplots
 import dash
 from dash import dcc

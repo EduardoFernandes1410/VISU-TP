@@ -1,7 +1,5 @@
 from dash import Dash, html, dash_table, dcc, callback, Output, Input
-import os
 import pandas as pd
-import numpy as np
 import plotly.express as px
 
 df_summer = pd.read_parquet("data/summer_world_map.parquet")

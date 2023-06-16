@@ -20,7 +20,7 @@ df_sports_per_year_winter = pd.read_parquet("data/disciplines_per_year_winter.pa
 
 # Initialize the app
 app = Dash(__name__)
-
+server = app.server
 
 # App layout
 app.layout = html.Div(
@@ -84,4 +84,6 @@ def update_graph(graph_type):
     if graph_type == "Medals World Map":
         return initialize_world_map()
 
-app.run_server()
+
+if __name__ == '__main__':
+    app.run_server()
