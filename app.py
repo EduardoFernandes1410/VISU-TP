@@ -11,6 +11,8 @@ from compare_countries import initialize_compare_countries
 from pib_vs_medals import initialize_pib
 from sports_through_time import initialize_sports_per_year
 from world_map_medals import initialize_world_map
+from rank_vs_type import initialize_type_vs_rank
+from type_year import initialize_type_vs_year
 
 # Incorporate data
 df = pd.read_csv("data/medals_processed.csv")
@@ -39,7 +41,9 @@ app.layout = html.Div(
                         {'label': 'Performance x Time', 'value': 'Perf Evol'},
                         {'label': 'GPD x Medals Count', 'value': 'GPD vs Medals'},
                         {'label': 'Sports Through Time', 'value': 'Sports Through Time'},
-                        {'label': 'Medals World Map', 'value': 'Medals World Map'}
+                        {'label': 'Medals World Map', 'value': 'Medals World Map'},
+                        {'label': 'Rank vs Type', 'value': 'Rank vs Type'},
+                        {'label': 'Year vs Type', 'value': 'Year vs Type'}
                     ],
                     value='Compare Medals',
                     id='choose-graph'
@@ -83,6 +87,12 @@ def update_graph(graph_type):
     
     if graph_type == "Medals World Map":
         return initialize_world_map()
+    
+    if graph_type == "Rank vs Type":
+        return initialize_type_vs_rank()
+    
+    if graph_type == "Year vs Type":
+        return initialize_type_vs_year()
 
 
 if __name__ == '__main__':
