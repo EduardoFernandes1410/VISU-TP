@@ -26,7 +26,7 @@ def get_color( val ):
 
 def initialize_type_vs_rank():
     return [html.Div([
-        html.H1('Biotipo do Atleta vs Ranking no evento', style={'text-align': 'center', 'fontFamily': 'Open Sans, sans-serif'}),
+        html.H1('Biotype of Athlete vs Ranking in Event', style={'text-align': 'center', 'fontFamily': 'Open Sans, sans-serif'}),
         html.Div(style={'display': 'flex', 'justify-content': 'space-between'},
                 children=[
             html.Div([
@@ -34,7 +34,7 @@ def initialize_type_vs_rank():
                     id='sport-dropdown',
                     value='All',
                     options=[{'label': discipline, 'value': discipline} for discipline in discipline_options],
-                    placeholder='Selecione um esporte'
+                    placeholder='Select a Sport'
                 )
             ], style={'flex': '1'}),
             
@@ -43,7 +43,7 @@ def initialize_type_vs_rank():
                     id='type-dropdown',
                     value='Age',
                     options=[{'label': val, 'value': val} for val in [ 'Age', 'Weight', 'Height' ]],
-                    placeholder='Selecione uma característica'
+                    placeholder='Select a characteristic'
                 )
             ], style={'flex': '1' }),
         ]),
@@ -66,6 +66,7 @@ def update_chart(sport, type):
 
     layout = go.Layout(
         yaxis={'title': f'{type}'},
+        xaxis={'title': 'Ranking position'},
         margin={'t':10},
         showlegend=False,
         height=550,

@@ -50,8 +50,8 @@ def update_world_map(selected_option):
         projection='natural earth',
         scope="world", 
         color_continuous_scale = 'Emrld', 
-        labels={'color':'Número de medalhas'},
-        title = 'Número de medalhas por país - Olimpíada de Verão',
+        labels={'color':'Number of medals'},
+        title = f'Number of medals per country - {selected_option} Games',
         hover_name='Country',
         animation_frame="Year",
         animation_group="Code",
@@ -98,10 +98,10 @@ def update_world_map(selected_option):
                 height=600,
         )
 
-    fig['layout'].sliders[0].currentvalue['prefix'] = 'Ano: '
-    fig.update_traces(hovertemplate='<b>%{hovertext}</b><br><br>Ano: 1896<br>Número de medalhas: %{z}<extra></extra>')
+    fig['layout'].sliders[0].currentvalue['prefix'] = 'Year: '
+    fig.update_traces(hovertemplate='<b>%{hovertext}</b><br><br>Year: 1896<br>Number of medals: %{z}<extra></extra>')
     for frame in fig.frames:
         year = frame.name
-        frame.data[0].hovertemplate = f'<b>%{{hovertext}}</b><br><br>Ano: {year}<br>Número de medalhas: %{{z}}'
+        frame.data[0].hovertemplate = f'<b>%{{hovertext}}</b><br><br>Year: {year}<br>Number of medals: %{{z}}'
     
     return fig
