@@ -80,7 +80,7 @@ def update_chart(sport, type):
             y=rank_df[type],
             line=dict(color=get_color(rank)),
             name=str(int(rank)),
-            legend=None,
+            # legend=None,
         ))
 
     return fig

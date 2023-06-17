@@ -68,7 +68,7 @@ def update_chart(type):
             y=year_df[type],
             line=dict(color=get_color(year)),
             name=str(int(year)),
-            legend=None,
+            # legend=None,
         ))
 
     return fig
