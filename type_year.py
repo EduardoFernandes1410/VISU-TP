@@ -28,7 +28,7 @@ def get_color( val ):
 
 def initialize_type_vs_year():
     return [html.Div([
-        html.H1('Biotipo dos Atletas vs Ano do evento', style={'text-align': 'center', 'fontFamily': 'Open Sans, sans-serif'}),
+        html.H1('Biotype of Athletes vs Year of the Events', style={'text-align': 'center', 'fontFamily': 'Open Sans, sans-serif'}),
         html.Div(style={'display': 'flex', 'justify-content': 'space-between'},
                 children=[       
             html.Div([
@@ -36,7 +36,7 @@ def initialize_type_vs_year():
                     id='type-dropdown',
                     value='Age',
                     options=[{'label': val, 'value': val} for val in [ 'Age', 'Weight', 'Height' ]],
-                    placeholder='Selecione uma característica'
+                    placeholder='Select a characteristic'
                 )
             ], style={'flex': '1' }),
         ]),
@@ -54,6 +54,7 @@ def update_chart(type):
 
     layout = go.Layout(
         yaxis={'title': f'{type}'},
+        xaxis={'title': 'Year'},
         margin={'t':10},
         showlegend=False,
         height=550,

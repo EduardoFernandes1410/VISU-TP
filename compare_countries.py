@@ -31,8 +31,8 @@ df = x.reset_index().merge(y.reset_index(),on=['Team', 'Year'])
 
 
 graph_layout = go.Layout(
-    xaxis={'title': 'Ano'},
-    yaxis={'title': f'Número de medalhas obtidas'},
+    xaxis={'title': 'Year'},
+    yaxis={'title': f'Number of medals obtained'},
     margin={'t': 20, 'b' : 5},
     )
 
@@ -41,7 +41,7 @@ def initialize_compare_countries():
     return [html.Div(
         style=None,
         children = [
-        html.H1('Experiência dos atletas e resultados', style={'text-align': 'center', 'fontFamily': 'Open Sans, sans-serif'}),
+        html.H1('Experience of athletes and results', style={'text-align': 'center', 'fontFamily': 'Open Sans, sans-serif'}),
         html.Div(
             style={'display': 'flex', 'flex-direction': 'column', 'align-items': 'center', 'height': '90vh', 'flex' : 1, 'justify-content' : '1'},
             children = [
@@ -53,7 +53,7 @@ def initialize_compare_countries():
                         dcc.Dropdown(
                             id='country-dropdown-one',
                             value=None,
-                            placeholder='Selecione um país',
+                            placeholder='Select a Country',
                             options = [
                                 {'label': html.Div([html.Img(src=f'https://raw.githubusercontent.com/hampusborgos/country-flags/main/png250px/{row.country_code.lower()}.png', 
                                                                     style={'width': '30px', 'height': 'auto', 'margin-right' : '5px'}), row.country_name],style={'display': 'flex', 'align-items': 'center'}
@@ -84,7 +84,7 @@ def initialize_compare_countries():
                         ]),
                     html.Div(
                             id='yaxis2row1',
-                            children='Número médio de olimpíadas disputadas pela delegação',
+                            children='Mean number of olympic games the delegation played',
                             style={
                                 'writing-mode' : 'vertical-lr',
                                 'height' : '90%',
@@ -101,7 +101,7 @@ def initialize_compare_countries():
                         dcc.Dropdown(
                             id='country-dropdown-two',
                             value=None,
-                            placeholder='Selecione um país',
+                            placeholder='Select a Country',
                             options = [
                                 {'label': html.Div([html.Img(src=f'https://raw.githubusercontent.com/hampusborgos/country-flags/main/png250px/{row.country_code.lower()}.png', 
                                                                     style={'width': '30px', 'height': 'auto', 'margin-right' : '5px'}), row.country_name],style={'display': 'flex', 'align-items': 'center'}
@@ -129,7 +129,7 @@ def initialize_compare_countries():
                     ], style={'flex' : '1'}),
                     html.Div(
                             id='yaxis2row2',
-                            children='Número médio de olimpíadas disputadas pela delegação',
+                            children='Mean number of olympic games the delegation played',
                             style={
                                 'writing-mode' : 'vertical-lr',
                                 'height' : '90%',

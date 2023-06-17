@@ -38,13 +38,13 @@ events = events[(events.game_year >= 4)]
 events = events[(events.value_unit > 0)].reset_index()
 
 value_type_map = {
-    'POINTS' : 'Pontos',
-    'TIME' : 'Tempo',
-    'IRM_POINTS' : 'Pontos',
-    'STROKES' : 'Golpes',
-    'WEIGHT' : 'Peso',
-    'DISTANCE': 'Distância',
-    'SCORE' : 'Pontos'    
+    'POINTS' : 'Points',
+    'TIME' : 'Time',
+    'IRM_POINTS' : 'Points',
+    'STROKES' : 'Strokes',
+    'WEIGHT' : 'Weight',
+    'DISTANCE': 'Distance',
+    'SCORE' : 'Score'
 }
 
 regexes = {
@@ -90,7 +90,7 @@ events = events.reset_index()
 
 def initialize_performance_evolution():
     return [html.Div([
-        html.H1('Evolução da performance ao longo do tempo', style={'text-align': 'center', 'fontFamily': 'Open Sans, sans-serif'}),
+        html.H1('Evolution of performance through time', style={'text-align': 'center', 'fontFamily': 'Open Sans, sans-serif'}),
         html.Div(style={'display': 'flex', 'justify-content': 'space-between'},
                 children=[
             html.Div([
@@ -98,7 +98,7 @@ def initialize_performance_evolution():
                     id='discipline-dropdown',
                     options=[{'label': discipline, 'value': discipline} for discipline in discipline_options],
                     value='Athletics',
-                    placeholder='Selecione uma disciplina'
+                    placeholder='Select a discipline'
                 )
             ], style={'flex': '1'}),
             
@@ -106,7 +106,7 @@ def initialize_performance_evolution():
                 dcc.Dropdown(
                     id='event-dropdown',
                     value='5000m men',
-                    placeholder='Selecione um evento'
+                    placeholder='Select an event'
                 )
             ], style={'flex': '1' }),
         ]),
@@ -191,8 +191,8 @@ def update_chart(event, discipline):
 
     type = filtered_df.parsed_value_type.values[0]
     layout = go.Layout(
-        xaxis={'title': 'Ano'},
-        yaxis={'title': f'Resultado ({type})'},
+        xaxis={'title': 'Year'},
+        yaxis={'title': f'Result ({type})'},
         margin={'t':10},
         showlegend=False,
         height=800,
