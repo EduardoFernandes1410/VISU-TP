@@ -39,7 +39,7 @@ app.layout = html.Div(
                         {'label': 'Medals Heatmap', 'value': 'Heatmap'},
                         {'label': 'Compare Medals', 'value': 'Compare Medals'},
                         {'label': 'Compare Countries', 'value': 'Compare Countries'},
-                        {'label': 'GPD x Medals Count', 'value': 'GPD vs Medals'},
+                        {'label': 'GDP x Medals Count', 'value': 'GDP vs Medals'},
                         {'label': 'Sports Through Time', 'value': 'Sports Through Time'},
                         {'label': 'Performance x Time', 'value': 'Perf Evol'},
                         {'label': 'Rank vs Type', 'value': 'Rank vs Type'},
@@ -79,7 +79,7 @@ def update_graph(graph_type):
     if graph_type == "Compare Countries":
         return initialize_compare_countries()
     
-    if graph_type == "GPD vs Medals":
+    if graph_type == "GDP vs Medals":
         return initialize_pib()
     
     if graph_type == "Sports Through Time":
