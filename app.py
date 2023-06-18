@@ -45,7 +45,7 @@ app.layout = html.Div(
                         {'label': 'Rank vs Type', 'value': 'Rank vs Type'},
                         {'label': 'Year vs Type', 'value': 'Year vs Type'}
                     ],
-                    value='Compare Medals',
+                    value='Medals World Map',
                     id='choose-graph'
                 )
             ]
