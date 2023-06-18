@@ -9,7 +9,8 @@ import pandas as pd
 import plotly.graph_objs as go
 
 olympic_events = pd.read_csv("./olympic_games/athlete_events.csv")
-olympics_counts = olympic_events[['Team','Name', 'Year',]].drop_duplicates().sort_values('Year')
+olympic_counts = olympic_events[['Team','Name', 'Year','Season']].drop_duplicates().sort_values('Year')
+olympics_counts = olympic_counts[olympic_counts.Season == 'Summer']
 olympics_counts.loc[:, 'was_there'] = True
 olympics_counts.loc[:, 'visitas_acumuladas'] = olympics_counts.groupby('Name',).was_there.cumsum()
 olympics_counts.head()
@@ -18,6 +19,7 @@ olympic_results = pd.read_csv('./olympic_games/olympic_results.csv')
 code_map = olympic_results[['country_name', 'country_code']].drop_duplicates().set_index('country_name').to_dict()['country_code']
 
 olympic_events = olympic_events[olympic_events.Season == 'Summer']
+olympic_events = olympic_events[olympic_events.Year != 1906]
 
 for pat, country in zip(["China", 'United States\-|United States$', 'Russia'],
                         ["People's Republic of China",'United States of America', 'Russian Federation']):
@@ -149,7 +151,7 @@ def initialize_compare_countries():
 )
 def update_function_for_country(country):
     subdf = df[df.Team == country]
-    
+
     return   go.Figure(
                                 data=go.Bar(
                                     x=subdf['Year'],
