@@ -62,6 +62,7 @@ def update_chart(type):
     )
 
     fig = go.Figure(layout=layout)
+    median_values = []
 
     for year in np.sort(filtered_df['Year'].unique()):
         year_df = filtered_df[(filtered_df['Year'] == year)]
@@ -71,5 +72,14 @@ def update_chart(type):
             name=str(int(year)),
             # legend=None,
         ))
+        median_y = year_df[type].median()  # Calculate the median value
+        median_values.append(median_y)  # Store the median value
+
+    fig.add_trace(go.Scatter(  # Add a line connecting the median values
+        x=np.sort(filtered_df['Year'].unique()),
+        y=median_values,
+        mode='lines',
+        line=dict(color='black', width=2)
+    ))
 
     return fig

@@ -74,6 +74,7 @@ def update_chart(sport, type):
     )
 
     fig = go.Figure(layout=layout)
+    median_values = []
 
     for rank in np.sort(filtered_df['rank_position'].unique()):
         rank_df = filtered_df[(filtered_df['rank_position'] == rank)]
@@ -83,5 +84,15 @@ def update_chart(sport, type):
             name=str(int(rank)),
             # legend=None,
         ))
+
+        median_y = rank_df[type].median()  # Calculate the median value
+        median_values.append(median_y)  # Store the median value
+
+    fig.add_trace(go.Scatter(  # Add a line connecting the median values
+        x=np.sort(filtered_df['rank_position'].unique()),
+        y=median_values,
+        mode='lines',
+        line=dict(color='black', width=2)
+    ))
 
     return fig
