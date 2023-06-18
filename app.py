@@ -35,13 +35,13 @@ app.layout = html.Div(
                 html.H3('Graph Options'),
                 dcc.Dropdown(
                     options=[
+                        {'label': 'Medals World Map', 'value': 'Medals World Map'},
+                        {'label': 'Medals Heatmap', 'value': 'Heatmap'},
                         {'label': 'Compare Medals', 'value': 'Compare Medals'},
                         {'label': 'Compare Countries', 'value': 'Compare Countries'},
-                        {'label': 'Medals Heatmap', 'value': 'Heatmap'},
-                        {'label': 'Performance x Time', 'value': 'Perf Evol'},
                         {'label': 'GPD x Medals Count', 'value': 'GPD vs Medals'},
                         {'label': 'Sports Through Time', 'value': 'Sports Through Time'},
-                        {'label': 'Medals World Map', 'value': 'Medals World Map'},
+                        {'label': 'Performance x Time', 'value': 'Perf Evol'},
                         {'label': 'Rank vs Type', 'value': 'Rank vs Type'},
                         {'label': 'Year vs Type', 'value': 'Year vs Type'}
                     ],
