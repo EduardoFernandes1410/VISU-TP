@@ -148,9 +148,8 @@ def initialize_compare_countries():
     Input('country-dropdown-one', 'value')
 )
 def update_function_for_country(country):
-    print(country)
-    subdf = df[df.Team.str.match(country)]
-    print(subdf)
+    subdf = df[df.Team == country]
+    
     return   go.Figure(
                                 data=go.Bar(
                                     x=subdf['Year'],
