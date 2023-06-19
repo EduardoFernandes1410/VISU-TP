@@ -18,11 +18,26 @@ hosts = pd.read_csv("./olympic_games/olympic_hosts.csv")
 athlete = athlete.dropna()
 
 athlete.Year = pd.to_numeric(athlete.Year, errors='coerce')
-athlete = athlete[(athlete.Year >= 1920)]
+athlete = athlete[(athlete.Year > 1920)]
 
-def get_color( val ):
-    season = list(hosts[ hosts.game_year == val ]['game_season'])[0]
-    if season == 'Summer':
+discipline_options = athlete.Sport.unique()
+discipline_options = np.append( discipline_options, ['All'] )
+
+def get_color( sport, val ):
+    season = list(hosts[ hosts.game_year == val ]['game_season'])
+
+    if len(season) > 1:
+        if sport == 'All':
+            return '#808080'
+
+    if sport == 'All':
+        if season[0] == 'Summer':
+            return '#f3872f'
+        return '#add8e6'
+    
+    default_season = list(athlete[athlete.Sport == sport]['Season'])[0]
+
+    if default_season == 'Summer':
         return '#f3872f'
     return '#add8e6'
 
@@ -31,6 +46,14 @@ def initialize_type_vs_year():
         html.H1('Biotype of Athletes vs Year of the Events', style={'text-align': 'center', 'fontFamily': 'Open Sans, sans-serif'}),
         html.Div(style={'display': 'flex', 'justify-content': 'space-between'},
                 children=[       
+            html.Div([
+                dcc.Dropdown(
+                    id='sport-dropdown',
+                    value='All',
+                    options=[{'label': discipline, 'value': discipline} for discipline in discipline_options],
+                    placeholder='Select a Sport'
+                )
+            ], style={'flex': '1'}),
             html.Div([
                 dcc.Dropdown(
                     id='type-dropdown',
@@ -46,11 +69,15 @@ def initialize_type_vs_year():
 
 @callback(
     Output(component_id='box-line', component_property='figure'),
+    Input(component_id='sport-dropdown', component_property='value'),
     Input(component_id='type-dropdown', component_property='value')
 )
 
-def update_chart(type):
+def update_chart(sport, type):
     filtered_df = athlete.copy()
+
+    if sport and sport != 'All':
+        filtered_df = filtered_df[filtered_df['Sport'] == sport]
 
     layout = go.Layout(
         yaxis={'title': f'{type}'},
@@ -68,7 +95,7 @@ def update_chart(type):
         year_df = filtered_df[(filtered_df['Year'] == year)]
         fig.add_trace( go.Box(
             y=year_df[type],
-            line=dict(color=get_color(year)),
+            line=dict(color=get_color(sport,year)),
             name=str(int(year)),
             # legend=None,
         ))
