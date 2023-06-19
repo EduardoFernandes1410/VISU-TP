@@ -37,13 +37,13 @@ app.layout = html.Div(
                     options=[
                         {'label': 'Medals World Map', 'value': 'Medals World Map'},
                         {'label': 'Medals Heatmap', 'value': 'Heatmap'},
-                        {'label': 'Compare Medals', 'value': 'Compare Medals'},
-                        {'label': 'Compare Countries', 'value': 'Compare Countries'},
+                        {'label': 'Compare Medals Through Time', 'value': 'Compare Medals'},
+                        {'label': 'Compare Countries in Experience and Medals', 'value': 'Compare Countries'},
                         {'label': 'GDP x Medals Count', 'value': 'GDP vs Medals'},
-                        {'label': 'Sports Through Time', 'value': 'Sports Through Time'},
+                        {'label': 'Available Sports Through Time', 'value': 'Sports Through Time'},
                         {'label': 'Performance x Time', 'value': 'Perf Evol'},
-                        {'label': 'Rank vs Type', 'value': 'Rank vs Type'},
-                        {'label': 'Year vs Type', 'value': 'Year vs Type'}
+                        {'label': 'Biotype vs Rank Position', 'value': 'Rank vs Type'},
+                        {'label': 'Biotype vs Year of the Events', 'value': 'Year vs Type'}
                     ],
                     value='Medals World Map',
                     id='choose-graph'
