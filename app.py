@@ -28,6 +28,7 @@ server = app.server
 app.layout = html.Div(
     children=[
         # Sidebar menu
+        html.H1('Data Visualization - Olympic Games', style={'text-align': 'center', 'fontFamily': 'Open Sans, sans-serif'}),
         html.Div(
             id='sidebar',
             className='sidebar',
@@ -42,8 +43,8 @@ app.layout = html.Div(
                         {'label': 'GDP x Medals Count', 'value': 'GDP vs Medals'},
                         {'label': 'Available Sports Through Time', 'value': 'Sports Through Time'},
                         {'label': 'Performance x Time', 'value': 'Perf Evol'},
-                        {'label': 'Biotype vs Rank Position', 'value': 'Rank vs Type'},
-                        {'label': 'Biotype vs Year of the Events', 'value': 'Year vs Type'}
+                        {'label': 'Biotype x Rank Position', 'value': 'Rank vs Type'},
+                        {'label': 'Biotype x Year of the Events', 'value': 'Year vs Type'}
                     ],
                     value='Medals World Map',
                     id='choose-graph'
